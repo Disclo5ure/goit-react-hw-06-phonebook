@@ -10,7 +10,6 @@ export const AddContactForm = () => {
     const number = e.currentTarget.number.value;
     dispatch(addContact({ name, number }));
     e.currentTarget.reset();
-    console.log(name);
   };
 
   return (
