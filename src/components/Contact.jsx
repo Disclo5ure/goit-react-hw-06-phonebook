@@ -1,18 +1,20 @@
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
 
-export const Contact = props => (
-  <li>
-    {props.name}: {props.number}
-    <button
-      className="delete-button"
-      onClick={() => props.handleDelete(props.name)}
-    >
-      Delete
-    </button>
-  </li>
-);
+export const Contact = props => {
+  const dispatch = useDispatch();
 
-Contact.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
+  const handleDeleteContact = name => dispatch(deleteContact(name));
+
+  return (
+    <li>
+      {props.name}: {props.number}
+      <button
+        className="delete-button"
+        onClick={() => handleDeleteContact(props.name)}
+      >
+        Delete
+      </button>
+    </li>
+  );
 };
